@@ -1,0 +1,44 @@
+.foundfilm-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.foundfilm-blocks-block {
+  display: flex;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.foundfilm-blocks-block-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: black;
+  font-family: RufinaR;
+}
+
+.foundfilm-blocks-block-text-up {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.foundfilm-blocks-block-text-raiting {
+  font-size: 18px;
+}
+
+.foundfilm-blocks-block-text-raiting span {
+  color: gold;
+}
+
+.foundfilm-blocks-block-text-subtitle {
+  line-height: 133%;
+}
+
+.foundfilm-blocks-block-text-down {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}

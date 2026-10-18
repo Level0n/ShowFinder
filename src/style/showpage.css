@@ -1,0 +1,44 @@
+.filmblock {
+  display: flex;
+  gap: 20px;
+  font-family: RufinaR;
+}
+
+.filmblock-img {
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+}
+
+.filmblock-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.filmblock-text-up, .filmblock-text-down {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filmblock-text-up-rating {
+  font-size: 18px;
+
+  span {
+    color: gold;
+  }
+}
+
+.filmblock-text-up-genres {
+  font-size: 20px;
+}
+
+.filmblock-text-up-summary {
+  font-size: 20px;
+  text-align: justify;
+}
+
+.filmblock-text-down-premiere, .filmblock-text-down-ended {
+  font-size: 18px;
+}

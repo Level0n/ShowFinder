@@ -1,0 +1,28 @@
+.top-blocks {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+}
+
+.top-blocks-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 360px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  transition: transform var(--animation);
+}
+
+.top-blocks-block:hover {
+  transform: scale(110%);
+}
+
+.top-blocks-block-img {
+  margin-bottom: 10px;
+}
+
+.top-blocks-block-text {
+  font-family: RufinaR;
+}
