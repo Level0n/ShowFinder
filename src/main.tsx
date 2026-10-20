@@ -1,6 +1,5 @@
-import { HashRouter, Routes, Route } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router'
 
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import { StartPage } from './TSX/StartPage';
@@ -13,16 +12,15 @@ import './style/index.css';
 import './style/fonts.css';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <HashRouter>
-      <Routes>
-        <Route path='/' element={<RootLayout />}>
-          <Route index element={<StartPage />} />
-          <Route path='*' element={<ErrorPage />} />
-          <Route path='search/:searchParam' element={<FoundFilm />} />
-          <Route path='show/:showId' element={<ShowPage />} />
-        </Route>
-      </Routes>
-    </HashRouter>
-  </StrictMode>,
+  <BrowserRouter  basename="/ShowFinder">
+    <Routes>
+      <Route path='/' element={<RootLayout />}>
+        <Route index element={<StartPage />} />
+        <Route path=':pageId' element={<StartPage />} />
+        <Route path='*' element={<ErrorPage />} />
+        <Route path='search/:searchParam' element={<FoundFilm />} />
+        <Route path='show/:showId' element={<ShowPage />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
 )

@@ -28,7 +28,7 @@ function FoundFilm() {
         {foundFilms && foundFilms.map((film: any) => {
           return (
             <Link to={`../show/${film.show.id}`} className="foundfilm-blocks-block" key={film.show.id}>
-              <img src={film.show.image.medium || '/img/stub.png'} alt="No photo" />
+              <img src={film.show.image.medium || '/ShowFinder/img/stub.png'} alt="No photo" />
               <div className="foundfilm-blocks-block-text">
                 <div className="foundfilm-blocks-block-text-up">
                   <h1 className="foundfilm-blocks-block-text-title">{film.show.name}</h1>

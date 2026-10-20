@@ -37,3 +37,8 @@
   font-family: RobotoSlabB;
   src: url(../fonts/RobotoSlab-Bold.ttf);
 }
+
+@font-face {
+  font-family: PrataR;
+  src: url(../fonts/Prata-Regular.ttf);
+}
