@@ -27,7 +27,7 @@ function ShowPage() {
   return (
     film && (
       <div className="filmblock">
-        <img className="filmblock-img" src={film.image.original} alt="" />
+        <img className="filmblock-img" src={film.image ? film.image.original : '/ShowFinder/img/stub.png'} alt="" />
         <div className="filmblock-text">
           <div className="filmblock-text-up">
             <h1 className="filmblock-text-up-title">{film.name} ({film.premiered.slice(0, 4)})</h1>

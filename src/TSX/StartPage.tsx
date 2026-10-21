@@ -21,18 +21,21 @@ function StartPage() {
   return (
     <section className='top'>
       <div className='top-blocks'>
-        {filmArr && filmArr.slice((pageId % 10 - 1) * 25, pageId % 10 * 25).map((film: any) => {
+        {filmArr && filmArr.slice(((pageId % 10 || 10) - 1) * 25, (pageId % 10 || 10) * 25).map((film: any) => {
           return (
             <Link to={`/show/${film.id}`} key={film.id} className='top-blocks-block'>
-              <img className='top-blocks-block-img' src={film.image.medium} alt="" />
+              <img className='top-blocks-block-img' src={film.image ? film.image.medium : '/ShowFinder/img/stub.png'} alt="" />
               <h2 className='top-blocks-block-text'>{film.name}</h2>
             </Link>
           )
         })}
       </div>
-      <div>
-        <Link to={'/1'}>1</Link>
-        <Link to={'/2'}>2</Link>
+      <div className='top-pages'>
+        <Link className='top-pages-page' to={pageId > 2 ? `/${pageId - 2}` : ''}>{pageId > 2 ? `${pageId - 2}` : ' '}</Link>
+        <Link className='top-pages-page' to={pageId > 1 ? `/${pageId - 1}` : ''}>{pageId > 1 ? `${pageId - 1}` : ' '}</Link>
+        <Link className='top-pages-page' to={`/${pageId}`}>{pageId}</Link>
+        <Link className='top-pages-page' to={`/${pageId + 1}`}>{pageId + 1}</Link>
+        <Link className='top-pages-page' to={`/${pageId + 2}`}>{pageId + 2}</Link>
       </div>
     </section>
   )
