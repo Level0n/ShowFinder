@@ -36,8 +36,8 @@ function FoundFilm() {
                   <p className="foundfilm-blocks-block-text-subtitle">{(film.show.summary || '').replace(/<.+?>/g, '')}</p>
                 </div>
                 <div className="foundfilm-blocks-block-text-down">
-                  <p>Premiere: {changeFormatDate(film.show.premiered)}</p>
-                  <p>{film.show.status === 'Ended' ? 'Status: Ended' : `Status: Running on ${film.show.schedule.days.join(',')} at ${film.show.schedule.time}`}</p>
+                  <p><span className="bold">Premiere:</span> {changeFormatDate(film.show.premiered)}</p>
+                  {film.show.status === 'Ended' ? <p><span className="bold">Status:</span> Ended</p> : <p><span className="bold">Status:</span> Running on {film.show.schedule.days.join(',')} at {film.show.schedule.time}</p>}
                 </div>
               </div>
             </Link>

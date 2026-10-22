@@ -13,7 +13,7 @@ function RootLayout() {
     <>
       <header className="header">
         <div className="header-container">
-          <Link className='header-logo' to='/'>LOGOTYPE</Link>
+          <Link className='header-logo' to='.'>LOGOTYPE</Link>
           <form className="header-form" onSubmit={submitSearch}>
             <input className="header-form-input" type='text' placeholder="Enter the title" name="textSerch" />
             <input className="header-form-button" type="submit" value={'Search'} name="buttonSearch" />
