@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
+import type { FoundFilmType } from "../types";
 
 import '../style/foundfilm.css';
 import { changeFormatDate } from '../utils/changeFormatDate';
@@ -7,7 +8,7 @@ import { changeFormatDate } from '../utils/changeFormatDate';
 
 function FoundFilm() {
   const { searchParam } = useParams();
-  const [foundFilms, setFoundFilms] = useState<any>(null);
+  const [foundFilms, setFoundFilms] = useState<FoundFilmType[]>();
 
   useEffect(() => {
     if (!searchParam) return;
@@ -25,7 +26,7 @@ function FoundFilm() {
   return (
     <section className="foundfilm">
       <div className="foundfilm-blocks">
-        {foundFilms && foundFilms.map((film: any) => {
+        {foundFilms && foundFilms.map((film: FoundFilmType) => {
           return (
             <Link to={`../show/${film.show.id}`} className="foundfilm-blocks-block" key={film.show.id}>
               <img src={film.show.image ? film.show.image.medium : '/ShowFinder/img/stub.png'} alt="No photo" />

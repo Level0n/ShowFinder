@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import type { ShowPageType } from "../types";
 
 import { changeFormatDate } from '../utils/changeFormatDate';
 import '../style/showpage.css';
 
 function ShowPage() {
   const { showId } = useParams();
-  const [film, setFilm] = useState<any>(null); //Потом поменять
+  const [film, setFilm] = useState<ShowPageType>();
 
   useEffect(() => {
     if (!showId) return;
