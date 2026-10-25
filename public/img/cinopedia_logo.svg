@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="420" viewBox="0 0 1600 420" role="img" aria-labelledby="title desc">
+<title id="title">CINOPEDIA logo</title>
+<desc id="desc">Cinematic serif wordmark with film-strip letter C in sage green and cream.</desc>
+<defs>
+ <linearGradient id="film" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9F1E3"/><stop offset=".52" stop-color="#92B9A7"/><stop offset="1" stop-color="#4E7568"/></linearGradient>
+ <linearGradient id="sage" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#B9DCC9"/><stop offset="1" stop-color="#719F8D"/></linearGradient>
+ <linearGradient id="ivory" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFDF2"/><stop offset="1" stop-color="#DDDCCF"/></linearGradient>
+</defs>
+<!-- Letter C: fully vector, film strip integrated into the top arc -->
+<path d="M305 98 C260 48 171 47 112 93 C53 139 47 237 96 297 C149 361 252 359 309 303 L279 266 C236 310 173 314 131 269 C95 231 99 160 135 126 C176 85 241 90 276 132 Z" fill="url(#film)"/>
+<path d="M113 90 C180 40 260 50 305 98 L276 132 C238 88 170 83 135 126 Z" fill="#C0DFCE"/>
+<g fill="#11171A">
+ <rect x="127" y="75" width="21" height="27" rx="2" transform="rotate(-29 138 88)"/>
+ <rect x="166" y="62" width="21" height="27" rx="2" transform="rotate(-14 176 75)"/>
+ <rect x="209" y="63" width="21" height="27" rx="2" transform="rotate(4 219 76)"/>
+ <rect x="251" y="77" width="20" height="26" rx="2" transform="rotate(24 261 90)"/>
+</g>
+<!-- four-point star -->
+<path d="M221 184 Q224 221 258 225 Q225 229 221 266 Q217 229 184 225 Q218 221 221 184Z" fill="#B8E5D0"/>
+<!-- Serif letterforms in two-tone palette -->
+<text x="326" y="282" font-family="Georgia, 'Times New Roman', serif" font-size="213" font-weight="400" letter-spacing="-5" fill="url(#ivory)">INO</text>
+<text x="735" y="282" font-family="Georgia, 'Times New Roman', serif" font-size="213" font-weight="400" letter-spacing="-6" fill="url(#sage)">PEDIA</text>
+</svg>

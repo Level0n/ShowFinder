@@ -12,7 +12,7 @@ import './style/index.css';
 import './style/fonts.css';
 
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter  basename="/ShowFinder">
+  <BrowserRouter basename="/ShowFinder/">
     <Routes>
       <Route path='/' element={<RootLayout />}>
         <Route index element={<StartPage />} />

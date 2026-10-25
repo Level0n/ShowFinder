@@ -14,14 +14,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: black;
-  
+  color: var(--secondary-text-color);
 }
 
 .foundfilm-blocks-block-text-up {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.foundfilm-blocks-block-text-title {
+  color: var(--main-text-color);
 }
 
 .foundfilm-blocks-block-text-raiting {

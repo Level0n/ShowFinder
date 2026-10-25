@@ -1,4 +1,10 @@
 :root {
+  --background-color: #11151D;
+  --surface-color: #1E2933;
+  --accent-color: #9DD9B4;
+  --main-text-color: #F5F7FA;
+  --secondary-text-color: #94A3B8;
+
   --time-animation: .3s;
   --function-animation: ease;
   --animation: var(--time-animation) var(--function-animation);
@@ -7,6 +13,7 @@
 body {
   margin: 0;
   font-family: PrataR;
+  background-color: var(--background-color);
 }
 
 p {
