@@ -22,7 +22,7 @@ function RootLayout() {
             <input className="header-form-input" type='text' placeholder="Enter the title" name="textSearch" />
             <input className="header-form-button" type="submit" value={'Search'} name="buttonSearch" />
           </form> */}
-          <form action="">
+          <form action="" onSubmit={submitSearch}>
             <input className="header-form-input-test" type="text" placeholder="Enter the title" name="textSearchTest" />
           </form>
         </div>
