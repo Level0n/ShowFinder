@@ -11,63 +11,91 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 25px;
   max-width: 1380px;
   width: 100%;
   padding: 10px 25px;
   background-color: var(--surface-color);
 }
 
-.header-logo {
+.header-top {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  font: 400 40px/normal Elephant;
-  color: #439765;
-  text-decoration: none;
 }
 
-.header-logo-img {
+.header-top-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-top-logo-img {
   width: 250px;
+}
+
+.header-top-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color var(--animation);
+
+  &:hover {
+    background-color: color-mix(in srgb, white, transparent 80%);
+  }
+}
+
+.header-top-icon {
+  color: var(--accent-color);
+}
+
+.header-bottom {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--animation);
+}
+
+.header-bottom-active {
+  max-height: 80px;
 }
 
 .header-form {
   position: relative;
+  margin-top: 25px;
+  margin-bottom: 10px;
 }
 
-.header-form-input {
-  width: 300px;
-  padding: 5px 65px 5px 5px;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-
-  &::placeholder {
-    color: black;
-  }
-}
-
-.header-form-input-test {
-  width: 100%;
-  height: 30px;
-  border: none;
-  background-color: var(--background-color);
+.header-form-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
   color: var(--main-text-color);
 }
 
-.header-form-button {
-  position: absolute;
-  right: 0;
-  background-color: white;
+.header-form-input {
+  width: 100%;
+  padding: 10px 20px 10px 40px;
   border: none;
-  border-left: 2px solid black;
-  border-radius: 0 5px 5px 0;
-  padding: 5px 6px;
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--background-color);
+  color: var(--main-text-color);
+  font-family: PrataR;
+  font-size: 18px;
+
+  &::placeholder {
+    color: var(--main-text-color);
+    opacity: 0.5;
+  }
 }
 
 .main {
   display: flex;
   justify-content: center;
-  margin-top: 120px;
+  margin-top: 200px;
 }
 
 .main-container {
