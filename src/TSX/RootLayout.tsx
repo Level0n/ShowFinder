@@ -17,7 +17,7 @@ function RootLayout() {
   }
 
   return ( 
-    <>
+    <div className="content">
       <header className="header">
         <div className="header-container">
           <div className="header-top">          
@@ -47,7 +47,18 @@ function RootLayout() {
           <Outlet />
         </div>
       </main>
-    </>
+      <footer className="footer">
+        <div className="footer-container">
+          <Link className='footer-logo' to='/'>
+            <img className='footer-logo-img' src="/ShowFinder/img/cinopedia_logo.svg" alt="" />
+          </Link>
+          <div className="footer-bottom">
+            <p className="footer-bottom-text">@Andrew Stepanov 2026</p>
+            <p className="footer-bottom-text">Information about the world of cinema</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   )
 }
 
