@@ -6,18 +6,28 @@ import '../style/startpage.css';
 
 function StartPage() {
   const [filmArr, setFilmArr] = useState<StartPageType[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<string>('');
+
   const pageId = +(useParams<string>().pageId || '1');
 
   useEffect(() => {
     fetch(`https://api.tvmaze.com/shows?page=${Math.floor(pageId / 10)}`)
     .then(response => {
-      if (!response.ok) throw new Error('Ошибка подключения'); 
+      if (!response.ok) throw new Error('Error connection'); 
       return response.json();
     })
-    .then(data => {setFilmArr(data)})
-
-    return;
+    .then((data: StartPageType[]) => {
+      setFilmArr(data);
+    })
+    .catch((error: {message: string}) => {
+      setIsError(error.message);
+    })
+    .finally(() => setIsLoading(false));
   }, [pageId]);
+
+  if (isLoading) return <section className='top text-top'>Loading...</section>;
+  if (isError) return <section className='top text-top'>{isError}</section>;
 
   return (
     <section className='top'>
