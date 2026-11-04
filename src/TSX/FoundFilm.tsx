@@ -9,19 +9,28 @@ import { changeFormatDate } from '../utils/changeFormatDate';
 function FoundFilm() {
   const { searchParam } = useParams();
   const [foundFilms, setFoundFilms] = useState<FoundFilmType[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<string>('');
 
   useEffect(() => {
     if (!searchParam) return;
 
     fetch(`https://api.tvmaze.com/search/shows?q=${encodeURIComponent(searchParam)}`)
     .then(response => {
-      if (!response.ok) throw new Error('Ошибка подключения');
+      if (!response.ok) throw new Error('Error connection'); 
       return response.json();
     })
-    .then(data => setFoundFilms(data));
-
-    return;
+    .then((data: FoundFilmType[]) => {
+      setFoundFilms(data);
+    })
+    .catch((error: {message: string}) => {
+      setIsError(error.message);
+    })
+    .finally(() => setIsLoading(false));
   }, [searchParam]);
+
+  if (isLoading) return <section className='top text-top'>Loading...</section>;
+  if (isError) return <section className='top text-top'>{isError}</section>;
 
   return (
     <section className="foundfilm">

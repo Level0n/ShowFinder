@@ -8,26 +8,32 @@ import '../style/showpage.css';
 function ShowPage() {
   const { showId } = useParams();
   const [film, setFilm] = useState<ShowPageType>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<string>('');
 
   useEffect(() => {
     if (!showId) return;
 
     fetch(`https://api.tvmaze.com/shows/${encodeURIComponent(showId)}`)
     .then(response => {
-      if (!response.ok) throw new Error('Ошибка подключения'); 
+      if (!response.ok) throw new Error('Error connection'); 
       return response.json();
     })
-    .then(data => {
-      console.log(data);
+    .then((data: ShowPageType) => {
       setFilm(data);
-    });
+    })
+    .catch((error: {message: string}) => {
+      setIsError(error.message);
+    })
+    .finally(() => setIsLoading(false));
+  }, [showId]);
 
-    return;
-  }, [showId])
+  if (isLoading) return <section className='top text-top'>Loading...</section>;
+  if (isError) return <section className='top text-top'>{isError}</section>;
 
   return (
     film && (
-      <div className="filmblock">
+      <section className="filmblock">
         <img className="filmblock-img" src={film.image ? film.image.original : '/ShowFinder/img/stub.png'} alt="" />
         <div className="filmblock-text">
           <div className="filmblock-text-up">
@@ -41,7 +47,7 @@ function ShowPage() {
             <p className="filmblock-text-down-ended">{film.status === 'Ended' ? `Ended ${changeFormatDate(film.ended)}` : `Running on ${film.schedule.days.join(',')} at ${film.schedule.time}`}</p>
           </div>
         </div>
-      </div>
+      </section>
     )
   )
 }
