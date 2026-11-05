@@ -20,8 +20,9 @@ function StartPage() {
     .then((data: StartPageType[]) => {
       setFilmArr(data);
     })
-    .catch((error: {message: string}) => {
-      setIsError(error.message);
+    .catch((error: unknown) => {
+      if (error instanceof Error) setIsError(error.message);
+      else setIsError('Unknown error')
     })
     .finally(() => setIsLoading(false));
   }, [pageId]);

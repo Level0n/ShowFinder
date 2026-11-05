@@ -41,6 +41,7 @@
 .filmblock-text-up-summary {
   font-size: 20px;
   text-align: justify;
+  line-height: 133%;
 }
 
 .filmblock-text-down-premiere, .filmblock-text-down-ended {

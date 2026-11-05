@@ -12,7 +12,10 @@ function ShowPage() {
   const [isError, setIsError] = useState<string>('');
 
   useEffect(() => {
-    if (!showId) return;
+    if (!showId) {
+      setIsLoading(false);
+      return;
+    }
 
     fetch(`https://api.tvmaze.com/shows/${encodeURIComponent(showId)}`)
     .then(response => {
@@ -22,8 +25,9 @@ function ShowPage() {
     .then((data: ShowPageType) => {
       setFilm(data);
     })
-    .catch((error: {message: string}) => {
-      setIsError(error.message);
+    .catch((error: unknown) => {
+      if (error instanceof Error) setIsError(error.message);
+      else setIsError('Unknown error')
     })
     .finally(() => setIsLoading(false));
   }, [showId]);
@@ -37,14 +41,14 @@ function ShowPage() {
         <img className="filmblock-img" src={film.image ? film.image.original : '/ShowFinder/img/stub.png'} alt="" />
         <div className="filmblock-text">
           <div className="filmblock-text-up">
-            <h1 className="filmblock-text-up-title">{film.name} ({film.premiered.slice(0, 4)})</h1>
-            <p className="filmblock-text-up-rating"><span>&#9733;</span>{film.rating.average}</p>
+            <h1 className="filmblock-text-up-title">{film.name} ({film.premiered?.slice(0, 4)})</h1>
+            {film.rating.average !== null && <p className="filmblock-text-up-rating"><span>&#9733;</span>{film.rating.average}</p>}
             <p className="filmblock-text-up-genres"><span className="bold">Genres</span>: {film.genres.join(', ')}.</p>
-            <p className="filmblock-text-up-summary">{film.summary.replace(/<.+?>/g, '')}</p>
+            {film.summary && <p className="filmblock-text-up-summary">{film.summary.replace(/<.+?>/g, '')}</p>}
           </div>
           <div className="filmblock-text-down">
-            <p className="filmblock-text-down-premiere"><span className="bold">Premiere:</span> {changeFormatDate(film.premiered)}</p>
-            <p className="filmblock-text-down-ended">{film.status === 'Ended' ? `Ended ${changeFormatDate(film.ended)}` : `Running on ${film.schedule.days.join(',')} at ${film.schedule.time}`}</p>
+            <p className="filmblock-text-down-premiere"><span className="bold">Premiere:</span> {film.premiered && changeFormatDate(film.premiered)}</p>
+            <p className="filmblock-text-down-ended">{film.status === 'Ended' && film.ended ? `Ended ${changeFormatDate(film.ended)}` : `Running on ${film.schedule.days.join(',')} at ${film.schedule.time}`}</p>
           </div>
         </div>
       </section>
