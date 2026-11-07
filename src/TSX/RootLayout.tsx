@@ -9,8 +9,8 @@ function RootLayout() {
   function submitSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     let searchText = event.currentTarget.elements.namedItem('textSearch') as HTMLInputElement;
-    if (searchText.value.length === 0) return;
-    navigate(`search/${searchText.value}`);
+    if (searchText.value.trim().length === 0) return;
+    navigate(`search/${encodeURIComponent(searchText.value)}`);
   }
 
   return ( 
@@ -22,7 +22,7 @@ function RootLayout() {
               <img className='header-top-logo-img' src="/ShowFinder/img/cinopedia_logo.svg" alt="" />
             </Link>
             <div className="header-top-icon-container" onClick={() => setIsShow(prev => !prev)}>
-              <svg className="header-top-icon" xmlns="http://w3.org" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="header-top-icon" xmlns="http://w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>

@@ -3,16 +3,25 @@ import { Link, useParams } from 'react-router';
 import type { StartPageType } from '../types';
 
 import '../style/startpage.css';
+import { ErrorPage } from './ErrorPage';
 
 function StartPage() {
   const [filmArr, setFilmArr] = useState<StartPageType[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<string>('');
 
-  const pageId = +(useParams<string>().pageId || '1');
+  const id = useParams<string>().pageId;
+  let pageId = 1;
+  if (id) pageId = Number(id);
 
   useEffect(() => {
-    fetch(`https://api.tvmaze.com/shows?page=${Math.floor(pageId / 10)}`)
+    if (!Number.isInteger(pageId) || pageId <= 0) return;
+
+    setIsLoading(true);
+    setIsError('');
+    setFilmArr([]);
+
+    fetch(`https://api.tvmaze.com/shows?page=${Math.floor((pageId - 1) / 10)}`)
     .then(response => {
       if (!response.ok) throw new Error('Error connection'); 
       return response.json();
@@ -26,6 +35,8 @@ function StartPage() {
     })
     .finally(() => setIsLoading(false));
   }, [pageId]);
+
+  if (!Number.isInteger(pageId) || pageId <= 0) return <ErrorPage />;
 
   if (isLoading) return <section className='top text-top'>Loading...</section>;
   if (isError) return <section className='top text-top'>{isError}</section>;
