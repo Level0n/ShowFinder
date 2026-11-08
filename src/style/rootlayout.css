@@ -45,9 +45,11 @@
   align-items: center;
   width: 45px;
   height: 45px;
+  border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color var(--animation);
+  background-color: transparent;
 
   &:hover {
     background-color: color-mix(in srgb, white, transparent 80%);

@@ -40,7 +40,7 @@ function FoundFilm() {
   if (isLoading) return <section className='top text-top'>Loading...</section>;
   if (isError) return <section className='top text-top'>{isError}</section>;
   if (foundFilms.length === 0) return <section className='top text-top'>Nothing found</section>;
-
+  
   return (
     <section className="foundfilm">
       <div className="foundfilm-blocks">
@@ -51,12 +51,12 @@ function FoundFilm() {
               <div className="foundfilm-blocks-block-text">
                 <div className="foundfilm-blocks-block-text-up">
                   <h1 className="foundfilm-blocks-block-text-title">{film.show.name}</h1>
-                  {film.show.rating.average !== null && <p className="foundfilm-blocks-block-text-raiting"><span>&#9733;</span>{film.show.rating.average}</p>}
+                  {film.show.rating.average != null && <p className="foundfilm-blocks-block-text-raiting"><span>&#9733;</span>{film.show.rating.average}</p>}
                   <p className="foundfilm-blocks-block-text-subtitle">{(film.show.summary || '').replace(/<.+?>/g, '')}</p>
                 </div>
                 <div className="foundfilm-blocks-block-text-down">
                   <p><span className="bold">Premiere:</span> {film.show.premiered && changeFormatDate(film.show.premiered)}</p>
-                  {film.show.status === 'Ended' ? <p><span className="bold">Status:</span> Ended</p> : <p><span className="bold">Status:</span> Running on {film.show.schedule.days.join(',')} at {film.show.schedule.time}</p>}
+                  {film.show.status === 'Ended' ? <p><span className="bold">Status:</span> {film.show.status}</p> : <p><span className="bold">Status:</span> {film.show.status} on {film.show.schedule.days.join(',')} at {film.show.schedule.time}</p>}
                 </div>
               </div>
             </Link>
